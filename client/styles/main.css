@@ -1,16 +1,19 @@
 body {
-  background-color: #45a173;
+  background-color: #3d8662;
 }
 
 .card {
-  border-radius: 25px;
   border: 2px solid black;
   position: absolute;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 .card:hover {
-  cursor: pointer;
+  width: 150%;
+  height: 150%;
+  z-index: 1;
+  transform: translate(-25%, -33.4%);
 }
 
 .area {
@@ -19,4 +22,39 @@ body {
   width: 80vw;
   transform: translate(-50%, 0%);
   bottom: 0px;
+}
+
+#btnPseudo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 70%);
+}
+
+#inputPseudo {
+  position: absolute;
+  width: 15rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -70%);
+}
+
+.text {
+  position: absolute;
+  font-size: 30px;
+  color: black;
+  text-align: center;
+  width: auto;
+  height: auto;
+  background-color: white;
+  border-radius: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: "Roboto", sans-serif;
+  max-width: 30vw;
+}
+
+.unclickable.card {
+  filter: brightness(25%);
+  cursor: not-allowed;
 }
