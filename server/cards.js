@@ -120,11 +120,14 @@ newGame(5);
 
 const logDeck = () => console.log(deck);
 
-console.log(sortDeck(playerDeck[4]));
+const getDeck = () => deck;
+const getPlayerDeck = () => playerDeck;
 
 module.exports = {
   shuffle,
   initDeck,
   logDeck,
-  newGame
+  newGame,
+  getDeck,
+  getPlayerDeck
 };
