@@ -158,6 +158,13 @@ socket.on("tooManyPlayers", () => {
 });
 socket.on("logToAll", message => console.log(`%c${message}`, "color: green"));
 
+socket.on("reconnection", playersOrder => {
+  players = playersOrder;
+  let playerPos = players.findIndex(val => val === pseudo);
+  movePlayers(playerPos);
+  drawPseudo();
+});
+
 socket.on("ready", () => {
   let playerPos = players.findIndex(val => val === pseudo);
   movePlayers(playerPos);
@@ -247,7 +254,12 @@ function displayChoiceButton(disabledChoice) {
 
 socket.on("choice", displayChoiceButton);
 
-socket.on("yourTurn", () => {
+socket.on("yourTurn", round => {
+  if (round !== undefined) {
+    for (let i in round) {
+      drawPlayerCard(round[i], players[i + 1]);
+    }
+  }
   document.getElementsByClassName("area")[0].className += " playerTurn";
 });
 

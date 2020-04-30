@@ -1,5 +1,5 @@
 let deck = [];
-const playerDeck = [[], [], [], [], []];
+const playersDeck = [[], [], [], [], []];
 let chien = [];
 
 const shuffle = array => {
@@ -11,6 +11,7 @@ const shuffle = array => {
 };
 
 const initDeck = () => {
+  deck = [];
   const rang = ["coeur", "pique", "carreau", "trefle"];
   const carte = "1 2 3 4 5 6 7 8 9 10 v c d r".split(" ");
   for (let rank of rang) {
@@ -82,7 +83,7 @@ const drawCardsFive = () => {
       index++;
       continue;
     }
-    playerDeck[playerCountDraw % 5].push(deck[index], deck[index + 1], deck[index + 2]);
+    playersDeck[playerCountDraw % 5].push(deck[index], deck[index + 1], deck[index + 2]);
     index += 3;
     playerCountDraw++;
   }
@@ -109,19 +110,19 @@ const drawCards = playerNumber => {
 };
 
 const newGame = playerNumber => {
+  initDeck();
   for (let i = 0; i < 100; i++) {
     shuffle(deck);
   }
   drawCards(playerNumber);
 };
-initDeck();
 
 newGame(5);
 
 const logDeck = () => console.log(deck);
 
 const getDeck = () => deck;
-const getPlayerDeck = () => playerDeck;
+const getPlayersDeck = () => playersDeck;
 
 module.exports = {
   shuffle,
@@ -129,5 +130,5 @@ module.exports = {
   logDeck,
   newGame,
   getDeck,
-  getPlayerDeck
+  getPlayersDeck
 };
